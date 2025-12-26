@@ -76,6 +76,26 @@ Here's what to add to your personal website in order to be part of the webring f
 - The hub then redirects you to the previous or next site in the webring
 - Clicking the icon takes you to the webring hub homepage
 
+## FAQ
+
+**Do I need a custom domain?**
+No. GitHub Pages, Netlify, Vercel, etc. are all fine.
+
+**Can I change my site later?**
+Yes! Just open another PR updating your entry.
+
+**What if my site is under construction?**
+That's fine, as long as it's not empty!
+
+**Is this official or affiliated with UW?**
+No. This is a student-run project.
+
+## Maintainer
+
+Built and maintained by William Cagas (SE '30).
+
+If you have questions, ideas, or run into issues, feel free to open an issue or pull request.
+
 ## Credits & Inspiration
 
-This webring was heavily inspired by the works of the general [SE Webring](https://se-webring.xyz/) and the [CS Webring](https://cs.uwatering.com/). Go check them out!
+This webring was inspired by the works of the general [SE Webring](https://se-webring.xyz/) and the [CS Webring](https://cs.uwatering.com/). Go check them out!
