@@ -13,11 +13,16 @@ import { StudentModal } from './components/StudentModal';
 import { WebRingWidget } from './components/WebRingWidget';
 import { WebringExpandable } from './components/WebringExpandable';
 import { JoinExpandable } from './components/JoinExpandable';
+import { RedirectingPage } from './components/RedirectingPage';
 
 export function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showNetwork, setShowNetwork] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+  const [redirectState, setRedirectState] = useState<{
+    targetSite: string;
+    direction: 'prev' | 'next';
+  } | null>(null);
 
   const filteredStudents = useMemo(
     () => filterStudents(students, searchQuery),
@@ -40,9 +45,18 @@ export function App() {
         const targetSite = direction === 'prev' ? navigation.prev : navigation.next;
 
         if (targetSite) {
-          // Redirect to the target site
-          window.location.href = targetSite;
-          return;
+          // Show redirecting page first
+          setRedirectState({
+            targetSite,
+            direction: direction as 'prev' | 'next',
+          });
+
+          // Redirect after a brief delay to show the redirecting page
+          const redirectTimer = setTimeout(() => {
+            window.location.href = targetSite;
+          }, 1000); // 1000ms delay to show the redirecting page
+
+          return () => clearTimeout(redirectTimer);
         }
       }
     }
@@ -59,6 +73,11 @@ export function App() {
   const handleToggleNetwork = () => {
     setShowNetwork(!showNetwork);
   };
+
+  // Show redirecting page if we're redirecting
+  if (redirectState) {
+    return <RedirectingPage targetSite={redirectState.targetSite} direction={redirectState.direction} />;
+  }
 
   return (
     <div className="min-h-screen w-full bg-[#181818] flex flex-col sm:flex-row">

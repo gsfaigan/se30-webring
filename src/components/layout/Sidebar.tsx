@@ -20,7 +20,15 @@ export function Sidebar({ searchQuery, onSearchChange, students }: SidebarProps)
   return (
     <aside className="hidden sm:flex fixed left-0 top-0 h-full w-[500px] flex-col border-r border-white/10 p-6 overflow-y-auto">
       <div className="mb-8">
-        <Logo className="h-12 w-12 mb-6" />
+        <a
+          href={EXTERNAL_URLS.WEBRING_REPO}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block hover:opacity-80 transition-opacity mb-6"
+          aria-label="View repository on GitHub"
+        >
+          <Logo className="h-12 w-12" />
+        </a>
         <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4">{UI_TEXT.APP_TITLE}</h1>
 
         <div className="mb-6">

@@ -1,4 +1,5 @@
 import { Logo } from '../Logo';
+import { EXTERNAL_URLS } from '../../constants';
 
 interface MobileHeaderProps {
   showNetwork: boolean;
@@ -56,7 +57,15 @@ export function MobileHeader({ showNetwork, onToggleNetwork }: MobileHeaderProps
   return (
     <>
       <div className="sm:hidden fixed top-0 left-0 right-0 z-50 bg-[#181818] border-b border-white/10 px-4 py-3 flex items-center justify-between">
-        <Logo className="h-8 w-8" />
+        <a
+          href={EXTERNAL_URLS.WEBRING_REPO}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-80 transition-opacity"
+          aria-label="View repository on GitHub"
+        >
+          <Logo className="h-8 w-8" />
+        </a>
         <button
           onClick={onToggleNetwork}
           className="text-white/80 hover:text-candlelight transition-colors p-1"
